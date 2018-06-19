@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 class Customer extends Component {
 
 
-
 handleInputChange = () => {
 
   this.props.customerSelectionCallBack(this.props.name)
@@ -13,7 +12,7 @@ handleInputChange = () => {
   render () {
     return (
       <tr>
-      <td> <input name="name" type="checkbox" onChange={this.handleInputChange}></input> </td>
+      <td> <input name="name" type="button" value="Select" onClick={this.handleInputChange}></input> </td>
       <td> {this.props.name} </td>
       <td> {this.props.address} </td>
       <td> {this.props.city} </td>

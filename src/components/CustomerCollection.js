@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Customer from './Customer.js';
 import axios from 'axios';
-
+import './CustomerCollection.css'
 
 class CustomerCollection extends Component {
 
   constructor() {
     super();
     this.state = {
-      selectedCustomer: 'Please select a customer',
+      selectedCustomer: 'Please Select a Customer',
       id: '',
       customers: []
     };
@@ -31,17 +31,17 @@ class CustomerCollection extends Component {
     const componentList = this.state.customers.map((customer,index) => {
       return (
         <Customer
-          customerSelectionCallBack={this.customerSelection}
-          key={index}
-          name={customer.name}
-          address={customer.address}
-          city={customer.city}
-          state={customer.state}
-          postal_code={customer.postal_code}
-          phone={customer.phone}
-          account_credit={customer.account_credit}
-          movies_checked_out_count={customer.movies_checked_out_count}
-          registered_at={customer.registered_at}
+        customerSelectionCallBack={this.customerSelection}
+        key={index}
+        name={customer.name}
+        address={customer.address}
+        city={customer.city}
+        state={customer.state}
+        postal_code={customer.postal_code}
+        phone={customer.phone}
+        account_credit={customer.account_credit}
+        movies_checked_out_count={customer.movies_checked_out_count}
+        registered_at={customer.registered_at}
         />
 
       );
@@ -54,10 +54,10 @@ class CustomerCollection extends Component {
   customerSelection = (customerName) => {
     const updateState = {};
 
-    if (customerName === this.state.selectedCustomer) {
-      updateState["selectedCustomer"] = 'Please select a customer',
+    if(customerName === this.state.selectedCustomer && this.state.selectedCustomer != 'Please Select a Customer'){
+      updateState["selectedCustomer"] = 'Please Select a Customer',
       this.setState(updateState);
-    } else {
+    }  else {
       updateState["selectedCustomer"] = customerName;
       this.setState(updateState);
     }
@@ -67,7 +67,10 @@ class CustomerCollection extends Component {
 
 
     return (
-      <selection> <h4>Selected Customer: {this.state.selectedCustomer} </h4>
+      <section>
+
+      {/*  Thiss should go on the Selected component later on...: */}
+      <h4 className={this.state.selectedCustomer === 'Please Select a Customer' ? "hidden" : ""}> Selected Customer: {this.state.selectedCustomer} </h4>
 
       <table>
       <th>Select</th>
@@ -80,10 +83,10 @@ class CustomerCollection extends Component {
       <th>Account Credit</th>
       <th>Movies Checked out Count</th>
       <th>Registered At</th>
-        {this.renderCustomerList()}
+      {this.renderCustomerList()}
       </table>
 
-      </selection>
+      </section>
     )
   }
 }
