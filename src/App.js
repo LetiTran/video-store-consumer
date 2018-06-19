@@ -9,8 +9,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
-        <LibraryCollection />
-
         <CustomerCollection />
       </div>
     );

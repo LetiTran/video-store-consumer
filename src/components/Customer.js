@@ -6,19 +6,11 @@ class Customer extends Component {
 
 
 handleInputChange = () => {
-  
+
   this.props.customerSelectionCallBack(this.props.name)
-  // // const fieldName = event.target.name;
-  // // const fieldValue = event.target.value;
-  //
-  // const updateState = {};
-  // // updateState[fieldName] = fieldValue;
-  // updateState[name] = this.props.name;
-  // this.setState(updateState);
 }
 
   render () {
-
     return (
       <tr>
       <td> <input name="name" type="checkbox" onChange={this.handleInputChange}></input> </td>
@@ -29,6 +21,8 @@ handleInputChange = () => {
       <td> {this.props.postal_code} </td>
       <td> {this.props.phone} </td>
       <td> {this.props.account_credit} </td>
+      <td> {this.props.movies_checked_out_count} </td>
+      <td> {this.props.registered_at} </td>
       </tr>
     )
   }
@@ -45,4 +39,5 @@ Customer.propTypes = {
   postal_code: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   account_credit: PropTypes.string.isRequired,
+  registered_at: PropTypes.string.isRequired,
 }
