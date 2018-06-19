@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 class Movie extends Component {
 
+
   render () {
     const imageURLBase = 'https://image.tmdb.org/t/p/w1280'
 
