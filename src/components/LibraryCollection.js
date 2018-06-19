@@ -32,7 +32,7 @@ class LibraryCollection extends Component {
           overview={movie.overview}
           release={movie.release_date}
           inventory={movie.inventory}
-          image={movie.image}
+          image={movie.image_url}
         />
       );
     });
