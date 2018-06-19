@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import Customer from './Customer.js';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import './CustomerCollection.css'
+import Customer from './Customer.js';
+import './CustomerCollection.css';
 
 class CustomerCollection extends Component {
 
   constructor() {
     super();
     this.state = {
-      selectedCustomer: 'Please Select a Customer',
-      id: '',
       customers: []
     };
   }
@@ -52,15 +50,7 @@ class CustomerCollection extends Component {
 
 
   customerSelection = (customerName) => {
-    const updateState = {};
-
-    if(customerName === this.state.selectedCustomer && this.state.selectedCustomer != 'Please Select a Customer'){
-      updateState["selectedCustomer"] = 'Please Select a Customer',
-      this.setState(updateState);
-    }  else {
-      updateState["selectedCustomer"] = customerName;
-      this.setState(updateState);
-    }
+    this.props.selectionBarComponentCallBack(customerName)
   }
 
   render () {
@@ -69,26 +59,33 @@ class CustomerCollection extends Component {
     return (
       <section>
 
-      {/*  Thiss should go on the Selected component later on...: */}
-      <h4 className={this.state.selectedCustomer === 'Please Select a Customer' ? "hidden" : ""}> Selected Customer: {this.state.selectedCustomer} </h4>
-
       <table>
-      <th>Select</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Postal Code</th>
-      <th>Phone</th>
-      <th>Account Credit</th>
-      <th>Movies Checked out Count</th>
-      <th>Registered At</th>
-      {this.renderCustomerList()}
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Phone</th>
+            <th>Account Credit</th>
+            <th>Movies Checked out Count</th>
+            <th>Registered At</th>
+          </tr>
+        </thead>
+          <tbody>
+            {this.renderCustomerList()}
+          </tbody>
       </table>
 
       </section>
     )
   }
+}
+
+CustomerCollection.propTypes = {
+selectionBarComponentCallBack: PropTypes.func.isRequired,
 }
 
 export default CustomerCollection;
