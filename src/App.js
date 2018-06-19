@@ -5,6 +5,7 @@ import CustomerCollection from './components/CustomerCollection.js'
 import LibraryCollection from './components/LibraryCollection.js'
 import SearchResults from './components/SearchResults.js'
 
+
 class App extends Component {
 
 
@@ -23,6 +24,7 @@ class App extends Component {
           <header>
             <h1>THE Video Store</h1>
             <nav>
+
               <ul>
                 <li>
                   <p>Search Placeholder</p>

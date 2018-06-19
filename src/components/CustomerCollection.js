@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import Customer from './Customer.js';
 import axios from 'axios';
+import Customer from './Customer.js';
 import './CustomerCollection.css'
+// import SelectedCustomer from './SelectedCustomer.js';
+import SelectionBar from './SelectionBar.js'
 
 class CustomerCollection extends Component {
 
@@ -61,6 +63,8 @@ class CustomerCollection extends Component {
       updateState["selectedCustomer"] = customerName;
       this.setState(updateState);
     }
+
+
   }
 
   render () {
@@ -68,10 +72,7 @@ class CustomerCollection extends Component {
 
     return (
       <section>
-
-      {/*  Thiss should go on the Selected component later on...: */}
-      <h4 className={this.state.selectedCustomer === 'Please Select a Customer' ? "hidden" : ""}> Selected Customer: {this.state.selectedCustomer} </h4>
-
+      <SelectionBar customerName={this.state.selectedCustomer}/>
       <table>
         <thead>
           <tr>

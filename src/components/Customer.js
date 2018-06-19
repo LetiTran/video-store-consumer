@@ -5,7 +5,6 @@ class Customer extends Component {
 
 
 handleInputChange = () => {
-
   this.props.customerSelectionCallBack(this.props.name)
 }
 
