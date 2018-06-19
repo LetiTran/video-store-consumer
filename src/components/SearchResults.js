@@ -16,9 +16,11 @@ class SearchResults extends Component {
 
 
   componentDidMount() {
-    const testSearch = 'princess bride'
+    const search = this.props.query
 
-    axios.get('http://localhost:3000/movies?query=' + testSearch)
+        console.log(this.props.query);
+        
+    axios.get('http://localhost:3000/movies?query=' + search)
     .then((response) => {
       this.setState({ movies: response.data });
     })
