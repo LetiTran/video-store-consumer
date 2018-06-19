@@ -13,8 +13,12 @@ class SearchResults extends Component {
     this.state = { movies: [] }
   }
 
+
+
   componentDidMount() {
-    axios.get('localhost:3000')
+    const testSearch = 'princess bride'
+
+    axios.get('http://localhost:3000/movies?query=' + testSearch)
     .then((response) => {
       this.setState({ movies: response.data });
     })
@@ -34,7 +38,7 @@ class SearchResults extends Component {
           overview={movie.overview}
           release={movie.release_date}
           inventory={movie.inventory}
-          image={movie.image}
+          image={movie.image_url}
         />
       );
     });
