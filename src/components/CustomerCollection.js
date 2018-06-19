@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import Customer from './Customer.js';
-import './CustomerCollection.css'
-// import SelectedCustomer from './SelectedCustomer.js';
-import SelectionBar from './SelectionBar.js'
+import './CustomerCollection.css';
 
 class CustomerCollection extends Component {
 
   constructor() {
     super();
     this.state = {
-      selectedCustomer: 'Please Select a Customer',
-      id: '',
       customers: []
     };
   }
@@ -54,17 +50,7 @@ class CustomerCollection extends Component {
 
 
   customerSelection = (customerName) => {
-    const updateState = {};
-
-    if(customerName === this.state.selectedCustomer && this.state.selectedCustomer !== 'Please Select a Customer'){
-      updateState["selectedCustomer"] = 'Please Select a Customer',
-      this.setState(updateState);
-    }  else {
-      updateState["selectedCustomer"] = customerName;
-      this.setState(updateState);
-    }
-
-
+    this.props.selectionBarComponentCallBack(customerName)
   }
 
   render () {
@@ -72,7 +58,7 @@ class CustomerCollection extends Component {
 
     return (
       <section>
-      <SelectionBar customerName={this.state.selectedCustomer}/>
+
       <table>
         <thead>
           <tr>
@@ -96,6 +82,10 @@ class CustomerCollection extends Component {
       </section>
     )
   }
+}
+
+CustomerCollection.propTypes = {
+selectionBarComponentCallBack: PropTypes.func.isRequired,
 }
 
 export default CustomerCollection;

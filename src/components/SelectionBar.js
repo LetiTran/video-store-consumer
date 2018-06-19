@@ -4,17 +4,6 @@ import SelectedCustomer from './SelectedCustomer.js'
 
 class SelectionBar extends Component {
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     customerName: 'Please Select a Customer',
-  //
-  //   };
-  // }
-
-
-
-
   render () {
     return (
       <SelectedCustomer customerName={this.props.customerName}/>

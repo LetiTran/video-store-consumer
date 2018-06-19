@@ -3,11 +3,29 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CustomerCollection from './components/CustomerCollection.js'
 import LibraryCollection from './components/LibraryCollection.js'
-import SearchResults from './components/SearchResults.js'
-
+import SelectionBar from './components/SelectionBar.js'
 
 class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      selectedCustomer: 'Please Select a Customer',
+    };
+  }
+
+  selectionBarComponent = (customerName) => {
+    // preventDefault();
+    const updateState = {};
+
+    if(customerName === this.state.selectedCustomer && this.state.selectedCustomer !== 'Please Select a Customer'){
+      updateState["selectedCustomer"] = 'Please Select a Customer',
+      this.setState(updateState);
+    }  else {
+      updateState["selectedCustomer"] = customerName;
+      this.setState(updateState);
+    }
+ }
 
   render() {
     const Library = () => (
@@ -15,7 +33,8 @@ class App extends Component {
     )
 
     const Customers = () => (
-      <CustomerCollection />
+      <CustomerCollection selectionBarComponentCallBack={this.selectionBarComponent}
+      />
     )
 
     return (
@@ -24,7 +43,6 @@ class App extends Component {
           <header>
             <h1>THE Video Store</h1>
             <nav>
-
               <ul>
                 <li>
                   <p>Search Placeholder</p>
@@ -36,11 +54,15 @@ class App extends Component {
                   <Link to="/customers">Customers</Link>
                 </li>
               </ul>
-
-              <Route path="/library" component={Library} />
-              <Route path="/customers" component={Customers} />
             </nav>
+
+            <SelectionBar
+            customerName={this.state.selectedCustomer}
+            />
           </header>
+
+          <Route path="/library" component={Library} />
+          <Route path="/customers" component={Customers} />
         </div>
       </Router>
     );
