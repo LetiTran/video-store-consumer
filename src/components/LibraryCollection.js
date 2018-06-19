@@ -12,7 +12,7 @@ class LibraryCollection extends Component {
   }
 
   componentDidMount() {
-    axios.get('localhost:3000')
+    axios.get('http://localhost:3000/movies')
     .then((response) => {
       this.setState({ movies: response.data });
     })
