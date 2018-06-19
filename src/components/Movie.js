@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 class Movie extends Component {
 
+handleInputChange = () => {
+  this.props.selectMovieCallBack(this.props.title)
+  
+}
 
   render () {
     return (
@@ -14,6 +18,8 @@ class Movie extends Component {
         <p>{this.props.overview}</p>
         <p>{this.props.release_date}</p>
         <p>{this.props.inventory}</p>
+
+        <input name="name" type="button" value="Select" onClick={this.handleInputChange}></input>
       </article>
     )
   }
@@ -26,5 +32,8 @@ Movie.propTypes = {
   image:PropTypes.string,
   overview:PropTypes.string,
   release_date:PropTypes.string,
-  inventory: PropTypes.number
+  inventory: PropTypes.number,
+  buttonName: PropTypes.string,
+  selectMovieCallBack: PropTypes.func,
+
 }

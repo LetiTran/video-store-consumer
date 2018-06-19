@@ -27,11 +27,17 @@ class SearchResults extends Component {
     });
   }
 
+  addToLibrary = () => {
+
+  }
+
   renderMovieList = () => {
     const componentList = this.state.movies.map((movie,index) => {
       return (
         <Movie
           key={index}
+          selectMovieCallBack={this.addToLibrary}
+          buttonName="Add to Library"
           title={movie.title}
           overview={movie.overview}
           release={movie.release_date}

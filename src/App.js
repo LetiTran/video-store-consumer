@@ -14,10 +14,11 @@ class App extends Component {
     this.state = {
       selectedCustomer: 'Please Select a Customer',
       searchQuery: '',
+      selectedMovie: 'Please Select a Movie',
     };
   }
 
-  selectionBarComponent = (customerName) => {
+  selectionCustomerBarComponent = (customerName) => {
     // preventDefault();
     const updateState = {};
 
@@ -30,6 +31,20 @@ class App extends Component {
     }
  }
 
+
+selectionMovieBarComponent= (movieName) => {
+  const updateState = {};
+
+  if(movieName === this.state.selectedMovie && this.state.selectedMovie !== 'Please Select a Movie'){
+    updateState["selectedMovie"] = 'Please Select a Movie',
+    this.setState(updateState);
+  }  else {
+    updateState["selectedMovie"] = movieName;
+    this.setState(updateState);
+      console.log(this.state.selectedMovie)
+  }
+}
+
   searchQuery = (query) => {
     this.setState({
       searchQuery: query,
@@ -38,11 +53,11 @@ class App extends Component {
 
   render() {
     const Library = () => (
-      <LibraryCollection />
+      <LibraryCollection selectionBarComponentCallBack={this.selectionMovieBarComponent}/>
     )
 
     const Customers = () => (
-      <CustomerCollection selectionBarComponentCallBack={this.selectionBarComponent}
+      <CustomerCollection selectionBarComponentCallBack={this.selectionCustomerBarComponent}
       />
     )
 
@@ -70,7 +85,7 @@ class App extends Component {
             </nav>
 
             <SelectionBar
-            customerName={this.state.selectedCustomer}
+            customerName={this.state.selectedCustomer} movieName={this.state.selectedMovie}
             />
           </header>
 
