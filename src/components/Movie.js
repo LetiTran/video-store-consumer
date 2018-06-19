@@ -5,13 +5,11 @@ class Movie extends Component {
 
 
   render () {
-    const imageURLBase = 'https://image.tmdb.org/t/p/w1280'
-
     return (
       <article>
         <h3>{this.props.title}</h3>
         { this.props.image &&
-          <img src={imageURLBase + this.props.image} alt={this.props.title} />
+          <img src= {this.props.image} alt={this.props.title} />
         }
         <p>{this.props.overview}</p>
         <p>{this.props.release_date}</p>
