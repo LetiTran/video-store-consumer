@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CustomerCollection from './components/CustomerCollection.js'
 import LibraryCollection from './components/LibraryCollection.js'
+import SearchForm from './components/SearchForm.js'
+import SearchResults from './components/SearchResults.js'
 import SelectionBar from './components/SelectionBar.js'
 
 class App extends Component {
@@ -11,6 +13,7 @@ class App extends Component {
     super();
     this.state = {
       selectedCustomer: 'Please Select a Customer',
+      searchQuery: '',
     };
   }
 
@@ -27,6 +30,12 @@ class App extends Component {
     }
  }
 
+  searchQuery = (query) => {
+    this.setState({
+      searchQuery: query,
+    });
+  }
+
   render() {
     const Library = () => (
       <LibraryCollection />
@@ -37,6 +46,10 @@ class App extends Component {
       />
     )
 
+    const Search = () => (
+      <SearchResults query={this.state.searchQuery} />
+    )
+
     return (
       <Router>
         <div className="App">
@@ -45,7 +58,7 @@ class App extends Component {
             <nav>
               <ul>
                 <li>
-                  <p>Search Placeholder</p>
+                  <SearchForm searchQueryCallback={this.searchQuery} />
                 </li>
                 <li>
                   <Link to="/library">Library</Link>
@@ -63,6 +76,7 @@ class App extends Component {
 
           <Route path="/library" component={Library} />
           <Route path="/customers" component={Customers} />
+          <Route path="/search" component={Search} />
         </div>
       </Router>
     );
