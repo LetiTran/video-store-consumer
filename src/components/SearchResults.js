@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Movie from './Movie';
-// import SearchForm from './SearchForm';
-
 import axios from 'axios';
-
+import PropTypes from 'prop-types';
+import Movie from './Movie';
 
 class SearchResults extends Component {
 
@@ -13,13 +11,11 @@ class SearchResults extends Component {
     this.state = { movies: [] }
   }
 
-
-
   componentDidMount() {
     const search = this.props.query
 
         console.log(this.props.query);
-        
+
     axios.get('http://localhost:3000/movies?query=' + search)
     .then((response) => {
       this.setState({ movies: response.data });
@@ -73,3 +69,7 @@ class SearchResults extends Component {
 }
 
 export default SearchResults;
+
+SearchResults.propTypes = {
+  query: PropTypes.string.isRequired,
+}
