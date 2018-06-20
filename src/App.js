@@ -50,6 +50,15 @@ selectionMovieBarComponent= (movieInfo) => {
   }
 }
 
+clearState =()=>{
+    this.setState({
+      selectedCustomerName: 'Please Select a Customer',
+      selectedCustomerId: 0,
+      selectedMovieName: 'Please Select a Movie',
+      selectedMovieId: 0,
+    });
+}
+
   searchQuery = (query) => {
     this.setState({
       searchQuery: query,
@@ -93,6 +102,7 @@ selectionMovieBarComponent= (movieInfo) => {
             customerName={this.state.selectedCustomerName} movieName={this.state.selectedMovieName}
             customerId={this.state.selectedCustomerId}
             movieId={this.state.selectedMovieId}
+            clearStateCallBack = {this.clearState}
             />
           </header>
 
