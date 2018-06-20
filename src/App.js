@@ -36,16 +36,16 @@ class App extends Component {
  }
 
 
-selectionMovieBarComponent= (movieName, movieId) => {
+selectionMovieBarComponent= (movieInfo) => {
   const updateState = {};
 
-  if(movieName === this.state.selectedMovieName && this.state.selectedMovieName !== 'Please Select a Movie'){
+  if(movieInfo.title === this.state.selectedMovieName && this.state.selectedMovieName !== 'Please Select a Movie'){
     updateState["selectedMovieName"] = 'Please Select a Movie';
     updateState["selectedMovieId"] = 0;
     this.setState(updateState);
   }  else {
-    updateState["selectedMovieName"] = movieName;
-    updateState["selectedMovieId"] = movieId;
+    updateState["selectedMovieName"] = movieInfo.title;
+    updateState["selectedMovieId"] = movieInfo.id;
     this.setState(updateState);
   }
 }
