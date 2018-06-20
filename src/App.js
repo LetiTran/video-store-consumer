@@ -12,36 +12,41 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selectedCustomer: 'Please Select a Customer',
+      selectedCustomerName: 'Please Select a Customer',
+      selectedCustomerId: 0,
+      selectedMovieName: 'Please Select a Movie',
+      selectedMovieId: 0,
       searchQuery: '',
-      selectedMovie: 'Please Select a Movie',
     };
   }
 
-  selectionCustomerBarComponent = (customerName) => {
+  selectionCustomerBarComponent = (customerName, customerId) => {
     // preventDefault();
     const updateState = {};
 
-    if(customerName === this.state.selectedCustomer && this.state.selectedCustomer !== 'Please Select a Customer'){
-      updateState["selectedCustomer"] = 'Please Select a Customer',
+    if(customerName === this.state.selectedCustomerName && this.state.selectedCustomerName !== 'Please Select a Customer'){
+      updateState["selectedCustomerName"] = 'Please Select a Customer';
+      updateState["selectedCustomerId"] = 0,
       this.setState(updateState);
     }  else {
-      updateState["selectedCustomer"] = customerName;
+      updateState["selectedCustomerName"] = customerName;
+      updateState["selectedCustomerId"] = customerId,
       this.setState(updateState);
     }
  }
 
 
-selectionMovieBarComponent= (movieName) => {
+selectionMovieBarComponent= (movieName, movieId) => {
   const updateState = {};
 
-  if(movieName === this.state.selectedMovie && this.state.selectedMovie !== 'Please Select a Movie'){
-    updateState["selectedMovie"] = 'Please Select a Movie',
+  if(movieName === this.state.selectedMovieName && this.state.selectedMovieName !== 'Please Select a Movie'){
+    updateState["selectedMovieName"] = 'Please Select a Movie',
+    updateState["selectedMovieId"] = 0,
     this.setState(updateState);
   }  else {
-    updateState["selectedMovie"] = movieName;
+    updateState["selectedMovieName"] = movieName;
+    updateState["selectedMovieId"] = movieId,
     this.setState(updateState);
-      console.log(this.state.selectedMovie)
   }
 }
 
@@ -85,7 +90,9 @@ selectionMovieBarComponent= (movieName) => {
             </nav>
 
             <SelectionBar
-            customerName={this.state.selectedCustomer} movieName={this.state.selectedMovie}
+            customerName={this.state.selectedCustomerName} movieName={this.state.selectedMovieName}
+            customerId={this.state.selectedCustomerId}
+            movieId={this.state.selectedMovieId}
             />
           </header>
 

@@ -5,7 +5,7 @@ class Customer extends Component {
 
 
 handleInputChange = () => {
-  this.props.customerSelectionCallBack(this.props.name)
+  this.props.customerSelectionCallBack(this.props.name, this.props.id)
 }
 
   render () {
@@ -30,6 +30,7 @@ export default Customer;
 
 Customer.propTypes = {
   customerSelectionCallBack: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
