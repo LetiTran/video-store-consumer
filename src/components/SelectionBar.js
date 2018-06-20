@@ -30,7 +30,6 @@ class SelectionBar extends Component {
 
   }
 
-
   render () {
     return (
       <div>
@@ -39,7 +38,7 @@ class SelectionBar extends Component {
       customerId={this.props.customerId}/>
       <SelectedMovie
       movieName={this.props.movieName} movieId={this.props.movieId}/>
-      <input name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
+      <input disabled={(this.props.customerId === 0)|| (this.props.customerId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
       </div>
     )
   }
