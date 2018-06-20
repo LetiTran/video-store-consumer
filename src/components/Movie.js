@@ -28,13 +28,13 @@ handleInputChange = () => {
 export default Movie;
 
 Movie.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string,
-  image:PropTypes.string,
-  overview:PropTypes.string,
-  release_date:PropTypes.string,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  image:PropTypes.string.isRequired,
+  overview:PropTypes.string.isRequired,
+  release_date:PropTypes.string.isRequired,
   inventory: PropTypes.number,
   buttonName: PropTypes.string,
-  selectMovieCallBack: PropTypes.func,
+  selectMovieCallBack: PropTypes.func.isRequired,
 
 }
