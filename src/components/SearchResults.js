@@ -14,10 +14,9 @@ class SearchResults extends Component {
   componentDidMount() {
     const search = this.props.query
 
-        console.log(this.props.query);
-
     axios.get('http://localhost:3000/movies?query=' + search)
     .then((response) => {
+      console.log(response);
       this.setState({ movies: response.data });
     })
     .catch((error) => {
@@ -27,8 +26,23 @@ class SearchResults extends Component {
     });
   }
 
-  addToLibrary = () => {
+  addToLibrary = (movie) => {
+    const movies = this.state.movies;
 
+    axios.post('http://localhost:3000/movies',movie)
+      .then((response) => {
+        console.log(response);
+        movies.push(movie);
+        this.setState({
+          movies,
+          message: `Successfully Added ${movie.title}`
+        })
+      })
+      .catch((error) => {
+        this.setState({
+          error: error.message
+        })
+      })
   }
 
   renderMovieList = () => {
@@ -43,6 +57,7 @@ class SearchResults extends Component {
           release={movie.release_date}
           inventory={movie.inventory}
           image={movie.image_url}
+          external_id={movie.external_id}
         />
       );
     });

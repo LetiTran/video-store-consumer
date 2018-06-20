@@ -4,8 +4,18 @@ import PropTypes from 'prop-types';
 class Movie extends Component {
 
 handleInputChange = () => {
-  this.props.selectMovieCallBack(this.props.title, this.props.id)
+  let image = this.props.image.split('/').pop()
 
+  const movieInfo = {
+    title: this.props.title,
+    id: this.props.id,
+    overview: this.props.overview,
+    release_date: this.props.release_date,
+    image_url: `/${image}`,
+    external_id: this.props.external_id,
+  }
+
+  this.props.selectMovieCallBack(movieInfo)
 }
 
   render () {
@@ -36,5 +46,5 @@ Movie.propTypes = {
   inventory: PropTypes.number,
   buttonName: PropTypes.string,
   selectMovieCallBack: PropTypes.func.isRequired,
-
+  external_id: PropTypes.number
 }
