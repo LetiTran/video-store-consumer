@@ -23,8 +23,8 @@ class LibraryCollection extends Component {
     });
   }
 
-  selectMovie =(movieName) => {
-  this.props.selectionBarComponentCallBack(movieName)
+  selectMovie =(movieName, movieId) => {
+  this.props.selectionBarComponentCallBack(movieName, movieId)
   }
 
   renderMovieList = () => {
@@ -39,6 +39,8 @@ class LibraryCollection extends Component {
           release={movie.release_date}
           inventory={movie.inventory}
           image={movie.image_url}
+          external_id={movie.external_id}
+          id={movie.id}
         />
       );
     });

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 class Movie extends Component {
 
 handleInputChange = () => {
-  this.props.selectMovieCallBack(this.props.title)
-  
+  this.props.selectMovieCallBack(this.props.title, this.props.id)
+
 }
 
   render () {
@@ -28,12 +28,13 @@ handleInputChange = () => {
 export default Movie;
 
 Movie.propTypes = {
-  title: PropTypes.string,
-  image:PropTypes.string,
-  overview:PropTypes.string,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  image:PropTypes.string.isRequired,
+  overview:PropTypes.string.isRequired,
   release_date:PropTypes.string,
   inventory: PropTypes.number,
   buttonName: PropTypes.string,
-  selectMovieCallBack: PropTypes.func,
+  selectMovieCallBack: PropTypes.func.isRequired,
 
 }

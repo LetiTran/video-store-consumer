@@ -31,6 +31,7 @@ class CustomerCollection extends Component {
         <Customer
         customerSelectionCallBack={this.customerSelection}
         key={index}
+        id={customer.id}
         name={customer.name}
         address={customer.address}
         city={customer.city}
@@ -49,8 +50,8 @@ class CustomerCollection extends Component {
   }
 
 
-  customerSelection = (customerName) => {
-    this.props.selectionBarComponentCallBack(customerName)
+  customerSelection = (customerName, customerId) => {
+    this.props.selectionBarComponentCallBack(customerName, customerId)
   }
 
   render () {
