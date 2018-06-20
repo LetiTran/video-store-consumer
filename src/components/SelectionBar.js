@@ -21,6 +21,7 @@ class SelectionBar extends Component {
       this.setState({ movies: response.data });
       console.log("Movie Rented!")
       console.log(dueDate)
+      this.props.clearStateCallBack();
     })
     .catch((error) => {
       this.setState({
@@ -51,4 +52,5 @@ SelectionBar.propTypes = {
   customerId: PropTypes.number.isRequired,
   movieName: PropTypes.string.isRequired,
   movieId: PropTypes.number.isRequired,
+  clearStateCallBack: PropTypes.func.isRequired,
 }
