@@ -32,7 +32,7 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   image:PropTypes.string.isRequired,
   overview:PropTypes.string.isRequired,
-  release_date:PropTypes.string.isRequired,
+  release_date:PropTypes.string,
   inventory: PropTypes.number,
   buttonName: PropTypes.string,
   selectMovieCallBack: PropTypes.func.isRequired,
