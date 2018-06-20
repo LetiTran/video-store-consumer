@@ -6,24 +6,31 @@ import axios from 'axios';
 
 class SelectionBar extends Component {
 
-  handleInputChange = () => {
+  rentMovie = () => {
     const customerId = this.props.customerId
     const title = this.props.movieName
 
+    // Create dueDate to be today + 7 days:
+    const today = new Date();
+    today.setDate(today.getDate() + 7);
+    const dueDate = today.getFullYear()+'-'+ (today.getMonth()+1) +'-'+today.getDate();
 
-
-  axios.post('http://localhost:3000/rentals/check-out', {"customer_id": customerId, "due_date": "2019-01-10", "title": title})
-  .then((response) => {
-    this.setState({ movies: response.data });
-    console.log("Movie Rented!")
-  })
-  .catch((error) => {
-    this.setState({
-      error: error.message
+    // Make POST request to our API
+    axios.post('http://localhost:3000/rentals/check-out', {"customer_id": customerId, "due_date": dueDate, "title": title})
+    .then((response) => {
+      this.setState({ movies: response.data });
+      console.log("Movie Rented!")
+      console.log(dueDate)
     })
-  });
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      })
+    });
 
-}
+  }
+
+
   render () {
     return (
       <div>
@@ -32,8 +39,8 @@ class SelectionBar extends Component {
       customerId={this.props.customerId}/>
       <SelectedMovie
       movieName={this.props.movieName} movieId={this.props.movieId}/>
-      <input name="rental" type="button" value="Check out new rental" onClick={this.handleInputChange}></input>
-            </div>
+      <input name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
+      </div>
     )
   }
 }
@@ -41,8 +48,8 @@ class SelectionBar extends Component {
 export default SelectionBar;
 
 SelectionBar.propTypes = {
-customerName: PropTypes.string.isRequired,
-customerId: PropTypes.number.isRequired,
-movieName: PropTypes.string.isRequired,
-movieId: PropTypes.number.isRequired,
+  customerName: PropTypes.string.isRequired,
+  customerId: PropTypes.number.isRequired,
+  movieName: PropTypes.string.isRequired,
+  movieId: PropTypes.number.isRequired,
 }

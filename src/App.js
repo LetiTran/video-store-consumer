@@ -26,11 +26,11 @@ class App extends Component {
 
     if(customerName === this.state.selectedCustomerName && this.state.selectedCustomerName !== 'Please Select a Customer'){
       updateState["selectedCustomerName"] = 'Please Select a Customer';
-      updateState["selectedCustomerId"] = 0,
+      updateState["selectedCustomerId"] = 0;
       this.setState(updateState);
     }  else {
       updateState["selectedCustomerName"] = customerName;
-      updateState["selectedCustomerId"] = customerId,
+      updateState["selectedCustomerId"] = customerId;
       this.setState(updateState);
     }
  }
@@ -40,12 +40,12 @@ selectionMovieBarComponent= (movieName, movieId) => {
   const updateState = {};
 
   if(movieName === this.state.selectedMovieName && this.state.selectedMovieName !== 'Please Select a Movie'){
-    updateState["selectedMovieName"] = 'Please Select a Movie',
-    updateState["selectedMovieId"] = 0,
+    updateState["selectedMovieName"] = 'Please Select a Movie';
+    updateState["selectedMovieId"] = 0;
     this.setState(updateState);
   }  else {
     updateState["selectedMovieName"] = movieName;
-    updateState["selectedMovieId"] = movieId,
+    updateState["selectedMovieId"] = movieId;
     this.setState(updateState);
   }
 }
