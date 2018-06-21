@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import CustomerCollection from './components/CustomerCollection.js'
 import LibraryCollection from './components/LibraryCollection.js'
 import SearchForm from './components/SearchForm.js'
 import SearchResults from './components/SearchResults.js'
 import SelectionBar from './components/SelectionBar.js'
-import CheckOutModal from './components/CheckOutModal.js'
-
 
 class App extends Component {
 
@@ -19,14 +17,9 @@ class App extends Component {
       selectedMovieName: 'Please Select a Movie',
       selectedMovieId: 0,
       searchQuery: '',
-      isOpen: false
+      showSearch: false,
     };
   }
-
-  toggleModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });}
 
   selectionCustomerBarComponent = (customerName, customerId) => {
     // preventDefault();
@@ -70,6 +63,7 @@ clearState =()=>{
   searchQuery = (query) => {
     this.setState({
       searchQuery: query,
+      showSearch: true,
     });
   }
 
@@ -87,6 +81,11 @@ clearState =()=>{
       <SearchResults query={this.state.searchQuery} />
     )
 
+    let linkTo
+    if (this.state.showSearch) {
+      linkTo = <SearchResults query={this.state.searchQuery} />
+    }
+
     return (
       <Router>
         <div className="App">
@@ -103,6 +102,9 @@ clearState =()=>{
                 <li>
                   <Link to="/customers">Customers</Link>
                 </li>
+                <li>
+                  { linkTo }
+                </li>
               </ul>
             </nav>
 
@@ -111,18 +113,14 @@ clearState =()=>{
             customerId={this.state.selectedCustomerId}
             movieId={this.state.selectedMovieId}
             clearStateCallBack = {this.clearState}
-            toggleModalCallBack = {this.toggleModal}
             />
           </header>
+          <Switch>
+            <Route path="/library" component={Library} />
+            <Route path="/customers" component={Customers} />
+            <Route path="/search" component={Search} />
+          </Switch>
 
-          <CheckOutModal show={this.state.isOpen}
-          onClose={this.toggleModal} />
-
-
-
-          <Route path="/library" component={Library} />
-          <Route path="/customers" component={Customers} />
-          <Route path="/search" component={Search} />
         </div>
       </Router>
     );
