@@ -6,6 +6,7 @@ import LibraryCollection from './components/LibraryCollection.js'
 import SearchForm from './components/SearchForm.js'
 import SearchResults from './components/SearchResults.js'
 import SelectionBar from './components/SelectionBar.js'
+import CheckOutModal from './components/CheckOutModal.js'
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
       selectedMovieId: 0,
       searchQuery: '',
       showSearch: false,
+      isOpen: false,
     };
   }
 
@@ -81,6 +83,13 @@ console.log(this.state);
     }
   }
 
+
+  toggleModal = () => {
+     this.setState({
+      isOpen: !this.state.isOpen
+     });}
+
+
   render() {
     const Library = () => (
       <LibraryCollection selectionBarComponentCallBack={this.selectionMovieBarComponent}/>
@@ -97,7 +106,8 @@ console.log(this.state);
 
     let linkTo
     if (this.state.showSearch) {
-      linkTo = <SearchResults query={this.state.searchQuery} />
+      // linkTo = <SearchResults query={this.state.searchQuery} />
+
     }
 
     return (
@@ -117,7 +127,7 @@ console.log(this.state);
                   <Link to="/customers">Customers</Link>
                 </li>
                 <li>
-                  { linkTo }
+                this.renderSearchResults()
                 </li>
               </ul>
             </nav>
@@ -127,12 +137,15 @@ console.log(this.state);
             customerId={this.state.selectedCustomerId}
             movieId={this.state.selectedMovieId}
             clearStateCallBack = {this.clearState}
+            toggleModalCallBack = {this.toggleModal}
             />
           </header>
+          <CheckOutModal show={this.state.isOpen}
+          onClose={this.toggleModal} />
           <Switch>
+            <Route path="/search" component={Search} />
             <Route path="/library" component={Library} />
             <Route path="/customers" component={Customers} />
-            <Route path="/search" component={Search} />
           </Switch>
 
         </div>
