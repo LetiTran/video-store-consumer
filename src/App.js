@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import CustomerCollection from './components/CustomerCollection.js'
 import LibraryCollection from './components/LibraryCollection.js'
 import SearchForm from './components/SearchForm.js'
@@ -18,8 +18,8 @@ class App extends Component {
       selectedMovieName: 'Please Select a Movie',
       selectedMovieId: 0,
       searchQuery: '',
-      showSearch: false,
       isOpen: false,
+      showSearch: false,
     };
   }
 
@@ -65,29 +65,39 @@ clearState =()=>{
   searchQuery = (query) => {
     this.setState({
       searchQuery: query,
-      showSearch: true,
     });
+    this.toggleSearchresults("show");
   }
 
   renderSearchResults() {
-console.log(this.state);
-  // const Search = () => (
-  //   <SearchResults query={this.state.searchQuery} />
-  // )
     if(this.state.showSearch) {
       return (
-        // <Route path="/search" component={Search} />
-        // <Redirect to="/search"/>
-          <SearchResults query={this.state.searchQuery} />
+        <Redirect to='/search'/>
       );
     }
   }
 
 
   toggleModal = () => {
-     this.setState({
+    this.setState({
       isOpen: !this.state.isOpen
-     });}
+    });
+  }
+
+  toggleSearchresults = (bool) => {
+    if(bool === "show") {
+      this.setState({
+        // showSearch: !this.state.showSearch
+        showSearch: bool
+      });
+    } else {
+      this.setState({
+        // showSearch: !this.state.showSearch
+        showSearch: false
+      });
+    }
+  }
+
 
 
   render() {
@@ -104,11 +114,6 @@ console.log(this.state);
       <SearchResults query={this.state.searchQuery} />
     )
 
-    let linkTo
-    if (this.state.showSearch) {
-      // linkTo = <SearchResults query={this.state.searchQuery} />
-
-    }
 
     return (
       <Router>
@@ -121,14 +126,12 @@ console.log(this.state);
                   <SearchForm searchQueryCallback={this.searchQuery} />
                 </li>
                 <li>
-                  <Link to="/library">Library</Link>
+                  <Link to="/library" onClick={this.toggleSearchresults}>Library</Link>
                 </li>
                 <li>
-                  <Link to="/customers">Customers</Link>
+                  <Link to="/customers" onClick={this.toggleSearchresults}>Customers</Link>
                 </li>
-                <li>
-                this.renderSearchResults()
-                </li>
+                <li>{this.renderSearchResults()}</li>
               </ul>
             </nav>
 
@@ -140,8 +143,10 @@ console.log(this.state);
             toggleModalCallBack = {this.toggleModal}
             />
           </header>
+
           <CheckOutModal show={this.state.isOpen}
           onClose={this.toggleModal} />
+
           <Switch>
             <Route path="/search" component={Search} />
             <Route path="/library" component={Library} />
