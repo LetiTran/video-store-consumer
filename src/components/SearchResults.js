@@ -16,7 +16,6 @@ class SearchResults extends Component {
 
     axios.get('http://localhost:3000/movies?query=' + search)
     .then((response) => {
-      console.log(response);
       this.setState({ movies: response.data });
     })
     .catch((error) => {
@@ -31,7 +30,6 @@ class SearchResults extends Component {
 
     axios.post('http://localhost:3000/movies',movie)
       .then((response) => {
-        console.log(response);
         movies.push(movie);
         this.setState({
           movies,

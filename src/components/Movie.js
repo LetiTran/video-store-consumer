@@ -38,7 +38,7 @@ handleInputChange = () => {
 export default Movie;
 
 Movie.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   title: PropTypes.string.isRequired,
   image:PropTypes.string.isRequired,
   overview:PropTypes.string.isRequired,
