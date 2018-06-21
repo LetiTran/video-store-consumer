@@ -7,7 +7,7 @@ import SearchForm from './components/SearchForm.js'
 import SearchResults from './components/SearchResults.js'
 import SelectionBar from './components/SelectionBar.js'
 import CheckOutModal from './components/CheckOutModal.js'
-import AddtoLibModal from './components/CheckOutModal.js'
+import AddtoLibModal from './components/AddtoLibModal.js'
 
 class App extends Component {
 
