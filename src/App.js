@@ -6,7 +6,6 @@ import LibraryCollection from './components/LibraryCollection.js'
 import SearchForm from './components/SearchForm.js'
 import SearchResults from './components/SearchResults.js'
 import SelectionBar from './components/SelectionBar.js'
-
 import CheckOutModal from './components/CheckOutModal.js'
 
 
@@ -112,17 +111,14 @@ clearState =()=>{
             customerId={this.state.selectedCustomerId}
             movieId={this.state.selectedMovieId}
             clearStateCallBack = {this.clearState}
+            toggleModalCallBack = {this.toggleModal}
             />
           </header>
 
-          <button onClick={this.toggleModal}>
-          Open the modal
-        </button>
-
           <CheckOutModal show={this.state.isOpen}
-          onClose={this.toggleModal} movie={ this.state.selectedMovieName}>
+          onClose={this.toggleModal} />
 
-        </CheckOutModal>
+
 
           <Route path="/library" component={Library} />
           <Route path="/customers" component={Customers} />

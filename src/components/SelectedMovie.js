@@ -6,7 +6,12 @@ class SelectedMovie extends Component {
 
   render () {
     return (
-      <h4 > Selected Movie: {this.props.movieName} ID: {this.props.movieId} </h4>
+      <div>
+      <h4>
+      Selected Movie:
+      </h4>
+      <p>{this.props.movieName}</p>
+      </div>
     )
   }
 }
@@ -14,6 +19,6 @@ class SelectedMovie extends Component {
 export default SelectedMovie;
 
 SelectedMovie.propTypes = {
-movieName:  PropTypes.string.isRequired,
+movieName: PropTypes.string.isRequired,
 movieId: PropTypes.number.isRequired
 }
