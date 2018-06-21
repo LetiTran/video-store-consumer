@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import SelectedCustomer from './SelectedCustomer.js'
 import SelectedMovie from './SelectedMovie.js'
-import axios from 'axios';
 
 class SelectionBar extends Component {
 
@@ -19,8 +19,9 @@ class SelectionBar extends Component {
     axios.post('http://localhost:3000/rentals/check-out', {"customer_id": customerId, "due_date": dueDate, "title": title})
     .then((response) => {
       this.setState({ movies: response.data });
-      console.log("Movie Rented!")
-      console.log(dueDate)
+      // open modal for confirmation:
+      this.props.toggleModalCallBack()
+      // clear App state:
       this.props.clearStateCallBack();
     })
     .catch((error) => {
@@ -28,18 +29,18 @@ class SelectionBar extends Component {
         error: error.message
       })
     });
-
   }
 
   render () {
     return (
       <div>
-      <SelectedCustomer
-      customerName={this.props.customerName}
-      customerId={this.props.customerId}/>
-      <SelectedMovie
-      movieName={this.props.movieName} movieId={this.props.movieId}/>
-      <input disabled={(this.props.customerId === 0)|| (this.props.customerId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
+        <SelectedCustomer
+        customerName={this.props.customerName}/>
+
+        <SelectedMovie
+        movieName={this.props.movieName}/>
+
+        <input disabled={(this.props.customerId === 0)|| (this.props.customerId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
       </div>
     )
   }
@@ -53,4 +54,5 @@ SelectionBar.propTypes = {
   movieName: PropTypes.string.isRequired,
   movieId: PropTypes.number.isRequired,
   clearStateCallBack: PropTypes.func.isRequired,
+  toggleModalCallBack: PropTypes.func.isRequired,
 }
