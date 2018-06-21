@@ -20,5 +20,4 @@ export default SelectedMovie;
 
 SelectedMovie.propTypes = {
 movieName: PropTypes.string.isRequired,
-movieId: PropTypes.number.isRequired
 }

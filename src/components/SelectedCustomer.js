@@ -20,5 +20,4 @@ export default SelectedCustomer;
 
 SelectedCustomer.propTypes = {
 customerName: PropTypes.string.isRequired,
-customerId: PropTypes.number.isRequired,
 }
