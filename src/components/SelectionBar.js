@@ -20,7 +20,7 @@ class SelectionBar extends Component {
     .then((response) => {
       this.setState({ movies: response.data });
       // open modal for confirmation:
-      this.props.toggleModalCallBack()
+      this.props.toggleCheckoutModalCallBack()
       // clear App state:
       this.props.clearStateCallBack();
     })
@@ -54,5 +54,5 @@ SelectionBar.propTypes = {
   movieName: PropTypes.string.isRequired,
   movieId: PropTypes.number.isRequired,
   clearStateCallBack: PropTypes.func.isRequired,
-  toggleModalCallBack: PropTypes.func.isRequired,
+  toggleCheckoutModalCallBack: PropTypes.func.isRequired,
 }
