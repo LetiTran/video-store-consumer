@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import CustomerCollection from './components/CustomerCollection.js'
 import LibraryCollection from './components/LibraryCollection.js'
 import SearchForm from './components/SearchForm.js'
@@ -17,6 +17,7 @@ class App extends Component {
       selectedMovieName: 'Please Select a Movie',
       selectedMovieId: 0,
       searchQuery: '',
+      showSearch: false,
     };
   }
 
@@ -62,7 +63,22 @@ clearState =()=>{
   searchQuery = (query) => {
     this.setState({
       searchQuery: query,
+      showSearch: true,
     });
+  }
+
+  renderSearchResults() {
+console.log(this.state);
+  // const Search = () => (
+  //   <SearchResults query={this.state.searchQuery} />
+  // )
+    if(this.state.showSearch) {
+      return (
+        // <Route path="/search" component={Search} />
+        // <Redirect to="/search"/>
+          <SearchResults query={this.state.searchQuery} />
+      );
+    }
   }
 
   render() {
@@ -75,9 +91,9 @@ clearState =()=>{
       />
     )
 
-    const Search = () => (
-      <SearchResults query={this.state.searchQuery} />
-    )
+    // const Search = () => (
+    //   <SearchResults query={this.state.searchQuery} />
+    // )
 
     return (
       <Router>
@@ -105,10 +121,12 @@ clearState =()=>{
             clearStateCallBack = {this.clearState}
             />
           </header>
+          <Switch>
+            <Route path="/library" component={Library} />
+            <Route path="/customers" component={Customers} />
+            {this.renderSearchResults()}
+          </Switch>
 
-          <Route path="/library" component={Library} />
-          <Route path="/customers" component={Customers} />
-          <Route path="/search" component={Search} />
         </div>
       </Router>
     );
