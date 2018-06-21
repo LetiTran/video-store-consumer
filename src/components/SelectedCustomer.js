@@ -6,7 +6,12 @@ class SelectedCustomer extends Component {
 
   render () {
     return (
-      <h4 > Selected Customer: {this.props.customerName} ID: {this.props.customerId} </h4>
+      <div>
+      <h4>
+      Selected Customer:
+      </h4>
+      <p>{this.props.customerName}</p>
+      </div>
     )
   }
 }
@@ -15,8 +20,4 @@ export default SelectedCustomer;
 
 SelectedCustomer.propTypes = {
 customerName: PropTypes.string.isRequired,
-customerId: PropTypes.number.isRequired,
 }
-
-// hidden class on css in a conditional statement:
-// className={this.props.customerName === 'Please Select a Customer' ? "hidden" : ""}

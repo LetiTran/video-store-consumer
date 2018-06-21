@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import CustomerCollection from './components/CustomerCollection.js'
 import LibraryCollection from './components/LibraryCollection.js'
 import SearchForm from './components/SearchForm.js'
@@ -91,9 +91,14 @@ console.log(this.state);
       />
     )
 
-    // const Search = () => (
-    //   <SearchResults query={this.state.searchQuery} />
-    // )
+    const Search = () => (
+      <SearchResults query={this.state.searchQuery} />
+    )
+
+    let linkTo
+    if (this.state.showSearch) {
+      linkTo = <SearchResults query={this.state.searchQuery} />
+    }
 
     return (
       <Router>
@@ -111,6 +116,9 @@ console.log(this.state);
                 <li>
                   <Link to="/customers">Customers</Link>
                 </li>
+                <li>
+                  { linkTo }
+                </li>
               </ul>
             </nav>
 
@@ -124,7 +132,7 @@ console.log(this.state);
           <Switch>
             <Route path="/library" component={Library} />
             <Route path="/customers" component={Customers} />
-            {this.renderSearchResults()}
+            <Route path="/search" component={Search} />
           </Switch>
 
         </div>
