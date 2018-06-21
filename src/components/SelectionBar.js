@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import SelectedCustomer from './SelectedCustomer.js'
 import SelectedMovie from './SelectedMovie.js'
-import axios from 'axios';
+import CheckOutModal from './CheckOutModal.js'
 
 class SelectionBar extends Component {
 
@@ -29,6 +30,7 @@ class SelectionBar extends Component {
       })
     });
 
+    // <CheckOutModal movie={title} dueDate={dueDate}/>
   }
 
   render () {
@@ -40,7 +42,10 @@ class SelectionBar extends Component {
       <SelectedMovie
       movieName={this.props.movieName} movieId={this.props.movieId}/>
       <input disabled={(this.props.customerId === 0)|| (this.props.customerId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
+
+
       </div>
+
     )
   }
 }

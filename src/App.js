@@ -7,6 +7,9 @@ import SearchForm from './components/SearchForm.js'
 import SearchResults from './components/SearchResults.js'
 import SelectionBar from './components/SelectionBar.js'
 
+import CheckOutModal from './components/CheckOutModal.js'
+
+
 class App extends Component {
 
   constructor() {
@@ -17,8 +20,14 @@ class App extends Component {
       selectedMovieName: 'Please Select a Movie',
       selectedMovieId: 0,
       searchQuery: '',
+      isOpen: false
     };
   }
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });}
 
   selectionCustomerBarComponent = (customerName, customerId) => {
     // preventDefault();
@@ -105,6 +114,15 @@ clearState =()=>{
             clearStateCallBack = {this.clearState}
             />
           </header>
+
+          <button onClick={this.toggleModal}>
+          Open the modal
+        </button>
+
+          <CheckOutModal show={this.state.isOpen}
+          onClose={this.toggleModal} movie={ this.state.selectedMovieName}>
+
+        </CheckOutModal>
 
           <Route path="/library" component={Library} />
           <Route path="/customers" component={Customers} />
