@@ -2,14 +2,14 @@
   margin-right: 10px;
 }
 
-.sumbit-form__sumbit {
+.sumbit-form__sumbit, .customer input {
   color: #FFFFFF;
   background-color: #02dbc4;
   border-radius: 20px;
   padding: 5px 15px;
 }
 
-.sumbit-form__sumbit:hover {
+.sumbit-form__sumbit:hover, .customer input:hover {
   background-color: #00887A;
 }
 

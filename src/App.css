@@ -13,3 +13,7 @@
   margin-right: 2em;
   color: #00887A;
 }
+
+*:focus {
+  outline:none;
+}
