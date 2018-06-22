@@ -127,7 +127,7 @@ clearState =()=>{
     return (
       <Router>
         <div className="App">
-          <header>
+          <header className="header">
             <h1>THE Video Store</h1>
             <nav className="nav">
               <ul>
@@ -143,15 +143,15 @@ clearState =()=>{
                 <li>{this.renderSearchResults()}</li>
               </ul>
             </nav>
-
-            <SelectionBar
-            customerName={this.state.selectedCustomerName} movieName={this.state.selectedMovieName}
-            customerId={this.state.selectedCustomerId}
-            movieId={this.state.selectedMovieId}
-            clearStateCallBack = {this.clearState}
-            toggleCheckoutModalCallBack = {this.toggleCheckoutModal}
-            />
           </header>
+          
+          <SelectionBar
+          customerName={this.state.selectedCustomerName} movieName={this.state.selectedMovieName}
+          customerId={this.state.selectedCustomerId}
+          movieId={this.state.selectedMovieId}
+          clearStateCallBack = {this.clearState}
+          toggleCheckoutModalCallBack = {this.toggleCheckoutModal}
+          />
 
           <CheckOutModal show={this.state.checkoutIsOpen}
           onClose={this.toggleCheckoutModal} />
