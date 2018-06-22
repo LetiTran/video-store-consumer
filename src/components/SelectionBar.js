@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import SelectedCustomer from './SelectedCustomer.js'
 import SelectedMovie from './SelectedMovie.js'
+import './SelectionBar.css'
 
 class SelectionBar extends Component {
 
@@ -33,14 +34,14 @@ class SelectionBar extends Component {
 
   render () {
     return (
-      <div>
+      <div className="selection-bar">
         <SelectedCustomer
         customerName={this.props.customerName}/>
 
         <SelectedMovie
         movieName={this.props.movieName}/>
 
-        <input disabled={(this.props.customerId === 0)|| (this.props.customerId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
+      <input className="checkout-button" disabled={(this.props.customerId === 0)|| (this.props.customerId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
       </div>
     )
   }

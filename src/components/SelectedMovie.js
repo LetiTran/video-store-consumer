@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './SelectionBar.css'
 
 
 class SelectedMovie extends Component {
 
   render () {
     return (
-      <div>
-      <h4>
-      Selected Movie:
-      </h4>
-      <p>{this.props.movieName}</p>
+      <div className="selected-movie">
+        <h4>
+        Selected Movie:
+        </h4>
+        <p>{this.props.movieName}</p>
       </div>
     )
   }

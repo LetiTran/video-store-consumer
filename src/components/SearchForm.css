@@ -1,0 +1,19 @@
+.sumbit-form__text-field {
+  margin-right: 10px;
+}
+
+.sumbit-form__sumbit {
+  color: #FFFFFF;
+  background-color: #02dbc4;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+.sumbit-form__sumbit:hover {
+  background-color: #00887A;
+}
+
+.sumbit-form__text-field,
+.sumbit-form__sumbit {
+  font-size: 1em;
+}
