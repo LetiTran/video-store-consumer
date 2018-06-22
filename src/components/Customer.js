@@ -19,7 +19,7 @@ handleInputChange = () => {
         <td> {this.props.state} </td>
         <td> {this.props.postal_code} </td>
         <td> {this.props.phone} </td>
-        <td> {this.props.account_credit} </td>
+        <td> $ {this.props.account_credit} </td>
         <td> {this.props.movies_checked_out_count} </td>
       </tr>
     )
