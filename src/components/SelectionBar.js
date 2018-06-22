@@ -41,7 +41,7 @@ class SelectionBar extends Component {
         <SelectedMovie
         movieName={this.props.movieName}/>
 
-      <input className="checkout-button" disabled={(this.props.customerId === 0)|| (this.props.customerId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
+      <input className="checkout-button" disabled={(this.props.customerId === 0)|| (this.props.movieId === 0) } name="rental" type="button" value="Check out new rental" onClick={this.rentMovie}></input>
       </div>
     )
   }
