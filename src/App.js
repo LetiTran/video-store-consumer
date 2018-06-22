@@ -7,6 +7,7 @@ import SearchForm from './components/SearchForm.js'
 import SearchResults from './components/SearchResults.js'
 import SelectionBar from './components/SelectionBar.js'
 import CheckOutModal from './components/CheckOutModal.js'
+import AddtoLibModal from './components/AddtoLibModal.js'
 
 class App extends Component {
 
@@ -18,8 +19,9 @@ class App extends Component {
       selectedMovieName: 'Please Select a Movie',
       selectedMovieId: 0,
       searchQuery: '',
-      isOpen: false,
+      checkoutIsOpen: false,
       showSearch: false,
+      addLibIsOpen: false
     };
   }
 
@@ -78,11 +80,18 @@ clearState =()=>{
   }
 
 
-  toggleModal = () => {
+  toggleCheckoutModal = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      checkoutIsOpen: !this.state.checkoutIsOpen
     });
   }
+
+  toggleLibModal= () => {
+    this.setState({
+      addLibIsOpen: !this.state.addLibIsOpen
+    });
+  }
+
 
   toggleSearchresults = (bool) => {
     if(bool === "show") {
@@ -111,7 +120,7 @@ clearState =()=>{
     )
 
     const Search = () => (
-      <SearchResults query={this.state.searchQuery} />
+      <SearchResults query={this.state.searchQuery} toggleLibModalCallBack = {this.toggleLibModal} />
     )
 
 
@@ -140,12 +149,15 @@ clearState =()=>{
             customerId={this.state.selectedCustomerId}
             movieId={this.state.selectedMovieId}
             clearStateCallBack = {this.clearState}
-            toggleModalCallBack = {this.toggleModal}
+            toggleCheckoutModalCallBack = {this.toggleCheckoutModal}
             />
           </header>
 
-          <CheckOutModal show={this.state.isOpen}
-          onClose={this.toggleModal} />
+          <CheckOutModal show={this.state.checkoutIsOpen}
+          onClose={this.toggleCheckoutModal} />
+
+          <AddtoLibModal show={this.state.addLibIsOpen}
+          onClose={this.toggleLibModal} />
 
           <Switch>
             <Route path="/search" component={Search} />

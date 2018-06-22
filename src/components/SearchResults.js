@@ -35,6 +35,7 @@ class SearchResults extends Component {
           movies,
           message: `Successfully Added ${movie.title}`
         })
+        this.props.toggleLibModalCallBack()
       })
       .catch((error) => {
         this.setState({
