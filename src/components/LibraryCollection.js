@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Movie from './Movie';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import './LibraryCollection.css';
 
 class LibraryCollection extends Component {
 
@@ -36,7 +37,7 @@ class LibraryCollection extends Component {
           buttonName="Select to rent"
           title={movie.title}
           overview={movie.overview}
-          release={movie.release_date}
+          release_date={movie.release_date}
           inventory={movie.inventory}
           image={movie.image_url}
           external_id={movie.external_id}
@@ -48,24 +49,6 @@ class LibraryCollection extends Component {
     return componentList
   }
 
-  // addMovie = (movie) => {
-  //   const movies = this.state.movies;
-  //
-  //   axios.post('localhost:/movies/',movie)
-  //     .then((response) => {
-  //       movies.push(movie);
-  //       this.setState({
-  //         movies,
-  //         message: `Successfully Added ${movie.name}`
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       this.setState({
-  //         error: error.message
-  //       })
-  //     })
-  // }
-
   render () {
     let errorMessage
 
@@ -73,17 +56,9 @@ class LibraryCollection extends Component {
       errorMessage = <p>{this.state.error}</p>
     }
 
-    let message
-
-    if (this.state.message) {
-      message = <p>{this.state.message}</p>
-    }
-
-
     return (
-      <section>
+      <section className="library-collection">
         {errorMessage}
-        {message}
         {this.renderMovieList()}
       </section>
     )

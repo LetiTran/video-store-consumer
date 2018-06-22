@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Movie.css';
 
 class Movie extends Component {
 
@@ -19,17 +20,23 @@ handleInputChange = () => {
 }
 
   render () {
-    return (
-      <article>
-        <h3>{this.props.title}</h3>
-        { this.props.image &&
-          <img src= {this.props.image} alt={this.props.title} />
-        }
-        <p>{this.props.overview}</p>
-        <p>{this.props.release_date}</p>
-        <p>{this.props.inventory}</p>
+    let inventory
 
-        <input name="name" type="button" value="Select" onClick={this.handleInputChange}></input>
+    if (this.props.inventory != null) {
+      inventory = <p>Inventory count = {this.props.inventory}</p>
+    }
+
+    return (
+      <article className="movie">
+        <h3>{this.props.title}</h3>
+        <div className="clearfix">
+          <img className="movie__image" src= {this.props.image} alt={this.props.title} />
+          <p className="movie__overview">{this.props.overview}</p>
+        </div>
+        <p>Release Date: {this.props.release_date}</p>
+        {inventory}
+
+        <input className="movie__select" name="name" type="button" value="Select" onClick={this.handleInputChange}></input>
       </article>
     )
   }

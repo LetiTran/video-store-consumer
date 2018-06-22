@@ -1,0 +1,34 @@
+.movie {
+  color: #FFFFFF;
+  background-color: #77A6F7;
+  padding-bottom: 30px;
+  border-radius: 60px;
+}
+
+.movie h3 {
+  font-size: 1.75rem;
+}
+
+.movie__image {
+ display: inline;
+ float: left;
+ padding: 0 20px;
+}
+
+.movie__overview{
+  display: block;
+  vertical-align: top;
+  padding: 0 2em;
+}
+
+.movie__select {
+  color: #00887A;
+  background-color: #FFCCBC;
+  padding: 10px 35px;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.clearfix {
+  overflow: auto;
+}

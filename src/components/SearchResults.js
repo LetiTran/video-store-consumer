@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Movie from './Movie';
+import './SearchResults.css';
 
 class SearchResults extends Component {
 
@@ -53,7 +54,7 @@ class SearchResults extends Component {
           buttonName="Add to Library"
           title={movie.title}
           overview={movie.overview}
-          release={movie.release_date}
+          release_date={movie.release_date}
           inventory={movie.inventory}
           image={movie.image_url}
           external_id={movie.external_id}
@@ -71,17 +72,10 @@ class SearchResults extends Component {
       errorMessage = <p>{this.state.error}</p>
     }
 
-    let message
-
-    if (this.state.message) {
-      message = <p>{this.state.message}</p>
-    }
-
 
     return (
-      <section>
+      <section className="search-results">
         {errorMessage}
-        {message}
         {this.renderMovieList()}
       </section>
     )
