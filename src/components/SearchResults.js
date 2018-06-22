@@ -27,9 +27,9 @@ class SearchResults extends Component {
 
   addToLibrary = (movie) => {
     const movies = this.state.movies;
-
+    console.log(movie)
     axios.post('http://localhost:3000/movies',movie)
-      .then((response) => {
+      .then(() => {
         movies.push(movie);
         this.setState({
           movies,
@@ -92,4 +92,5 @@ export default SearchResults;
 
 SearchResults.propTypes = {
   query: PropTypes.string.isRequired,
+  toggleLibModalCallBack: PropTypes.func
 }
