@@ -23,8 +23,18 @@ handleInputChange = () => {
     let inventory
 
     if (this.props.inventory != null) {
-      inventory = <p>Inventory count = {this.props.inventory}</p>
+      inventory = <p>Inventory: {this.props.inventory}</p>
     }
+
+
+    // Format release date:
+    const release_date = new Date(this.props.release_date);
+    const release_date_formatted = new Intl.DateTimeFormat('en-GB', {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit'
+    }).format(release_date)
+
 
     return (
       <article className="movie">
@@ -33,7 +43,7 @@ handleInputChange = () => {
           <img className="movie__image" src= {this.props.image} alt={this.props.title} />
           <p className="movie__overview">{this.props.overview}</p>
         </div>
-        <p>Release Date: {this.props.release_date}</p>
+        <p>Release Date: {release_date_formatted} </p>
         {inventory}
 
         <input className="movie__select" name="name" type="button" value="Select" onClick={this.handleInputChange}></input>
