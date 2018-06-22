@@ -1,3 +1,23 @@
+.customer-collection__header, .customer {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+}
+
+.customer-collection__table {
+  margin: 3rem;
+  border: solid 2px #00887A;
+}
+
+.customer-collection__header {
+  color: #00887A;
+  padding: 1em 0;
+  border-bottom: solid 2px #00887A;
+}
+
+.customer-collection__customers tr:nth-child(even){
+  background: #D3E3FC;
+}
+
 .hidden {
   display: none;
 }

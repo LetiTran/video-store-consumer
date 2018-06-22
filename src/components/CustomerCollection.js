@@ -58,11 +58,9 @@ class CustomerCollection extends Component {
 
 
     return (
-      <section>
-
-      <table>
+      <table className="customer-collection__table">
         <thead>
-          <tr>
+          <tr className="customer-collection__header">
             <th>Select</th>
             <th>Name</th>
             <th>Address</th>
@@ -71,16 +69,13 @@ class CustomerCollection extends Component {
             <th>Postal Code</th>
             <th>Phone</th>
             <th>Account Credit</th>
-            <th>Movies Checked out Count</th>
-            <th>Registered At</th>
+            <th>Movies Checked Out</th>
           </tr>
         </thead>
-          <tbody>
+          <tbody className="customer-collection__customers">
             {this.renderCustomerList()}
           </tbody>
       </table>
-
-      </section>
     )
   }
 }
