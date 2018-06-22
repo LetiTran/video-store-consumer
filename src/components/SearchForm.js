@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './SearchForm.css'
 
 class SearchForm extends Component {
   constructor() {
@@ -42,12 +43,12 @@ class SearchForm extends Component {
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
-        <div>
-          <input name="query" value={this.state.query}
+        <div className="sumbit-form">
+          <input className="sumbit-form__text-field" name="query" value={this.state.query}
           onChange={this.onFieldChange} type="text"
           />
 
-          <input type="submit" value="Search" />
+        <input className="sumbit-form__sumbit" type="submit" value="Search" />
         </div>
       </form>
     )

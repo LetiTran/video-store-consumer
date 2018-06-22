@@ -1,0 +1,42 @@
+.selection-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #D3E3FC;
+  margin-bottom: 2em;
+}
+
+.selection-bar > * {
+  margin: 2em 3em;
+}
+
+.selected-movie h4,
+.selected-movie p,
+.selected-customer h4,
+.selected-customer p {
+  margin: 0;
+}
+
+.selected-movie h4,
+.selected-customer h4 {
+  margin-bottom: .5em;
+}
+
+.checkout-button {
+  color: #FFFFFF;
+  background-color: #00887A;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: .9rem;
+}
+
+.checkout-button:disabled {
+  opacity: 0.25;
+}
+
+@media all and (max-width: 500px) {
+  .selection-bar {
+    flex-direction: column;
+  }
+}

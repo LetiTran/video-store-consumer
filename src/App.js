@@ -129,7 +129,7 @@ clearState =()=>{
         <div className="App">
           <header>
             <h1>THE Video Store</h1>
-            <nav>
+            <nav className="nav">
               <ul>
                 <li>
                   <SearchForm searchQueryCallback={this.searchQuery} />
