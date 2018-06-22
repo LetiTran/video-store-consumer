@@ -13,3 +13,18 @@
   margin-right: 2em;
   color: #00887A;
 }
+
+*:focus {
+  outline:none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 5%;
+}
+
+h1 {
+  font-size: 3.5em;
+}
